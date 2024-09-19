@@ -30,8 +30,10 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
   // Estados locales para manejar la edición de la tarea.
   const [isEditing, setIsEditing] = useState(false); // Estado para determinar si se está editando la tarea.
   const [newText, setNewText] = useState(task.text); // Estado para el nuevo texto de la tarea.
+  const [newDescription, setNewDescription] = useState(task.description); // Esttado para la nueva descripción de la tarea.
   const [newCategory, setNewCategory] = useState(task.category); // Estado para la nueva categoría de la tarea.
   const [newDueDate, setNewDueDate] = useState(task.dueDate); // Estado para la nueva fecha de vencimiento de la tarea.
+  
 
   /**
    * Maneja la activación y desactivación del modo de edición.
@@ -42,7 +44,7 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
    */
   const handleEdit = () => {
     if (isEditing) {
-      editTask(index, newText, newCategory, newDueDate);
+      editTask(index, newText, newDescription, newCategory, newDueDate);
     }
     setIsEditing(!isEditing);
   };
@@ -56,6 +58,7 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
   const handleCancelEdit = () => {
     setIsEditing(false);
     setNewText(task.text);
+    setNewDescription(task.description);
     setNewCategory(task.category);
     setNewDueDate(task.dueDate);
   };
@@ -70,6 +73,12 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
             value={newText}
             onChange={(e) => setNewText(e.target.value)}
             placeholder="Editar tarea..."
+          />
+          <input
+            type="text"
+            value={newDescription}
+            onChange={(e) => setNewDescription(e.target.value)}
+            placeholder="Editar descripción..."
           />
           <select value={newCategory} onChange={(e) => setNewCategory(e.target.value)}>
             <option value="Trabajo">Trabajo</option>
@@ -99,6 +108,7 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
           <div className="task-info">
             <small>Creado: {task.createdAt.toLocaleDateString()} {task.createdAt.toLocaleTimeString()}</small>
             {task.completedAt && <small>Completado: {task.completedAt.toLocaleDateString()}</small>}
+            <small>Descripción: {task.description}</small>
             <small>Fecha límite: {task.dueDate}</small>
             <small>Categoría: {task.category}</small>
           </div>

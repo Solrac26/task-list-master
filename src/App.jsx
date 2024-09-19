@@ -54,9 +54,10 @@ function App() {
    * @param {string} category - La categoría de la tarea.
    * @param {string} dueDate - La fecha de vencimiento de la tarea.
    */
-  const addTask = (taskText, category, dueDate) => {
+  const addTask = (taskText, description, category, dueDate) => {
     const newTask = {
       text: taskText,
+      description,
       category,
       dueDate,
       createdAt: new Date(),
@@ -72,13 +73,20 @@ function App() {
    * @function editTask
    * @param {number} index - El índice de la tarea que se va a editar.
    * @param {string} newText - El nuevo texto de la tarea.
+   * @param {string} newDescription - La nueva descripción de la tarea.
    * @param {string} newCategory - La nueva categoría de la tarea.
    * @param {string} newDueDate - La nueva fecha de vencimiento de la tarea.
    */
-  const editTask = (index, newText, newCategory, newDueDate) => {
+  const editTask = (index, newText, newDescription, newCategory, newDueDate) => {
     const updatedTasks = tasks.map((task, idx) => {
       if (idx === index) {
-        return { ...task, text: newText, category: newCategory, dueDate: newDueDate };
+        return { 
+          ...task, 
+          text: newText, 
+          description: newDescription, 
+          category: newCategory, 
+          dueDate: newDueDate 
+        };
       }
       return task;
     });
