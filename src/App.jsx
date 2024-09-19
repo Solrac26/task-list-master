@@ -7,12 +7,12 @@
  */
 
 import { useState, useEffect } from 'react'; // Importamos useEffect para manejar efectos secundarios
-import Header from './components/Header';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
-import TaskSearch from './components/TaskSearch';
-import TaskFilters from './components/TaskFilters';
-import './index.css';
+import Header from './components/Header/Header';
+import TaskForm from './components/TaskForm/TaskForm';
+import TaskList from './components/TaskList/TaskList';
+import TaskSearch from './components/TaskSearch/TaskSearch';
+import TaskFilters from './components/TaskFilters/TaskFilters';
+import './App.css';
 
 /**
  * App es el componente principal de la aplicación que maneja el estado global y 

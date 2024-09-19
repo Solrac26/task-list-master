@@ -8,7 +8,7 @@
 // Desactiva temporalmente las advertencias de ESLint relacionadas con las prop-types. 
 // Esto es útil si las prop-types no se están utilizando pero se planea hacerlo más adelante.
 
-import TaskItem from './TaskItem';
+import TaskItem from '../TaskItem/TaskItem';
 import './TaskList.css';
 
 /**
