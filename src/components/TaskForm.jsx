@@ -29,6 +29,7 @@ function TaskForm({ addTask }) {
   const [newTask, setNewTask] = useState(""); // Estado para el nombre de la nueva tarea.
   const [category, setCategory] = useState(""); // Estado para la categoría de la tarea.
   const [dueDate, setDueDate] = useState(""); // Estado para la fecha de vencimiento de la tarea.
+  const [description, setDescription] = useState(""); // Estado para la descripcion de la nueva tarea.
 
   /**
    * Maneja el evento de envío del formulario.
@@ -41,9 +42,10 @@ function TaskForm({ addTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTask.trim()) {
-      addTask(newTask, category, dueDate);
+      addTask(newTask, description, category, dueDate);
       setNewTask("");
       setCategory("");
+      setDescription("");
       setDueDate("");
     }
   };
