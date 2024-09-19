@@ -4,27 +4,29 @@
   justify-content: space-between;
   padding: 15px;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.2s ease;
   margin-bottom: 15px;
+  border-left: 5px solid var(--color-pendientes);
 }
 
 .task-item.completed {
-  background-color: #e0f7fa;
-  border-left: 5px solid #00796b;
+  background-color: #ffffff;
+  border-left: 5px solid var(--color-completadas);
 }
 
 .task-item.completed span {
   text-decoration: none;
-  color: #004d40;
+  color: var(--texto-principal);
 }
 
 .task-item span {
   cursor: pointer;
   display: block;
   font-size: 1.2rem;
+  color: var(--texto-principal);
 }
 
 .task-info {
@@ -34,7 +36,7 @@
 }
 
 .task-info small {
-  color: #666;
+  color: var(--texto-secundario);
   margin-top: 5px;
 }
 
@@ -48,7 +50,7 @@
 .edit-btn,
 .delete-btn {
   background: transparent;
-  color: #007bff;
+  color: var(--color-principal);
   padding: 6px;
   border-radius: 5px;
   display: flex;
@@ -57,17 +59,13 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.check-btn:hover {
-  background-color: #e0f7fa;
-  color: #007bff;
-}
-
+.check-btn:hover,
 .edit-btn:hover {
-  background-color: #e0f7fa;
-  color: #007bff;
+  background-color: var(--color-principal);
+  color: var(--texto-principal);
 }
 
 .delete-btn:hover {
-  background-color: #ffebee;
-  color: #d32f2f;
+  background-color: var(--color-vencidas);
+  color: #ffffff;
 }
