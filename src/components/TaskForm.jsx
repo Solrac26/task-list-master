@@ -27,9 +27,9 @@ import "./TaskForm.css";
 function TaskForm({ addTask }) {
   // useState hooks para manejar los valores de los inputs del formulario.
   const [newTask, setNewTask] = useState(""); // Estado para el nombre de la nueva tarea.
+  const [description, setDescription] = useState(""); // Estado para la descripcion de la nueva tarea.
   const [category, setCategory] = useState(""); // Estado para la categoría de la tarea.
   const [dueDate, setDueDate] = useState(""); // Estado para la fecha de vencimiento de la tarea.
-  const [description, setDescription] = useState(""); // Estado para la descripcion de la nueva tarea.
 
   /**
    * Maneja el evento de envío del formulario.
@@ -64,7 +64,7 @@ function TaskForm({ addTask }) {
       <input
         type="text"
         placeholder="Descripcion..."
-        value={newTask}
+        value={description}
         onChange={(e) => setNewTask(e.target.value)}
       />
 
