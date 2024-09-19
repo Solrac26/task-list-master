@@ -10,9 +10,10 @@
 .edit-form select {
   padding: 8px;
   font-size: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-principal);
   border-radius: 5px;
   outline: none;
+  color: var(--texto-principal);
 }
 
 .edit-buttons {
@@ -27,12 +28,13 @@
   border: none;
   cursor: pointer;
   transition: color 0.3s ease;
+  color: var(--texto-principal);
 }
 
 .edit-save-btn:hover {
-  color: green;
+  color: var(--color-completadas);
 }
 
 .edit-cancel-btn:hover {
-  color: red;
+  color: var(--color-vencidas);
 }

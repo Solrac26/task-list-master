@@ -1,15 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
+:root {
+  --color-principal: #E3F2FD;
+  --color-completadas: #4CAF50;
+  --color-pendientes: #F65C51;
+  --color-vencidas: #F65C51;
+  --texto-principal: #212121;
+  --texto-secundario: #757575;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f2f5;
+  background-color: var(--color-principal);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: #333;
+  color: var(--texto-principal);
 }
 
 .app-container {
@@ -27,8 +36,48 @@ button {
   border: none;
   border-radius: 50px;
   transition: transform 0.2s ease, background-color 0.3s ease;
+  background-color: var(--color-principal);
+  color: var(--texto-principal);
+}
+
+button:hover {
+  background-color: #BBDEFB;
 }
 
 button:focus {
   outline: none;
+}
+
+/* Estilos adicionales para aplicar la paleta de colores */
+.task-item {
+  border-left: 4px solid var(--color-pendientes);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.task-item.completed {
+  border-left-color: var(--color-completadas);
+}
+
+.task-item.overdue {
+  border-left-color: var(--color-vencidas);
+}
+
+.task-text {
+  color: var(--texto-principal);
+}
+
+.task-description {
+  color: var(--texto-secundario);
+}
+
+h1, h2, h3 {
+  color: var(--texto-principal);
+}
+
+/* Estilos para inputs y selects */
+input[type="text"], input[type="date"], select {
+  border: 1px solid var(--color-principal);
+  color: var(--texto-principal);
+  background-color: #ffffff;
 }
