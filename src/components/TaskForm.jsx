@@ -65,7 +65,7 @@ function TaskForm({ addTask }) {
         type="text"
         placeholder="Descripcion..."
         value={description}
-        onChange={(e) => setNewTask(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
       />
 
       {/* Selector para elegir la categoría de la tarea */}
