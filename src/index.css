@@ -14,7 +14,7 @@ body {
 
 .app-container {
   width: 100%;
-  max-width: 600px;
+  max-width: auto;
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

@@ -2,23 +2,23 @@
  * @file TaskForm.jsx
  * @description Este componente es un formulario que permite al usuario añadir nuevas tareas.
  * Incluye campos para el nombre de la tarea, la categoría y la fecha de vencimiento.
- * 
+ *
  * Utiliza `useState` para manejar el estado interno del formulario.
- * 
+ *
  * Importa `FiPlus` de `react-icons/fi` para agregar un icono en el botón de envío.
  */
 
 /* eslint-disable react/prop-types */
-// La línea anterior desactiva temporalmente las advertencias de ESLint relacionadas con las prop-types. 
+// La línea anterior desactiva temporalmente las advertencias de ESLint relacionadas con las prop-types.
 // Esto es útil si las prop-types no se están utilizando pero se planea hacerlo más adelante.
 
-import { useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
-import './TaskForm.css';
+import { useState } from "react";
+import { FiPlus } from "react-icons/fi";
+import "./TaskForm.css";
 
 /**
  * TaskForm es un componente funcional que renderiza un formulario para añadir nuevas tareas.
- * 
+ *
  * @function TaskForm
  * @param {Object} props - Las propiedades recibidas por el componente.
  * @param {Function} props.addTask - Función para añadir una nueva tarea a la lista.
@@ -26,13 +26,13 @@ import './TaskForm.css';
  */
 function TaskForm({ addTask }) {
   // useState hooks para manejar los valores de los inputs del formulario.
-  const [newTask, setNewTask] = useState(''); // Estado para el nombre de la nueva tarea.
-  const [category, setCategory] = useState(''); // Estado para la categoría de la tarea.
-  const [dueDate, setDueDate] = useState(''); // Estado para la fecha de vencimiento de la tarea.
+  const [newTask, setNewTask] = useState(""); // Estado para el nombre de la nueva tarea.
+  const [category, setCategory] = useState(""); // Estado para la categoría de la tarea.
+  const [dueDate, setDueDate] = useState(""); // Estado para la fecha de vencimiento de la tarea.
 
   /**
    * Maneja el evento de envío del formulario.
-   * 
+   *
    * @function handleSubmit
    * @param {Object} e - El evento de envío del formulario.
    * @description Evita el comportamiento por defecto del formulario, verifica que el campo de la tarea no esté vacío,
@@ -42,9 +42,9 @@ function TaskForm({ addTask }) {
     e.preventDefault();
     if (newTask.trim()) {
       addTask(newTask, category, dueDate);
-      setNewTask('');
-      setCategory('');
-      setDueDate('');
+      setNewTask("");
+      setCategory("");
+      setDueDate("");
     }
   };
 
@@ -55,6 +55,13 @@ function TaskForm({ addTask }) {
       <input
         type="text"
         placeholder="Nueva tarea..."
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+      />
+
+      <input
+        type="text"
+        placeholder="Descripcion..."
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
       />
