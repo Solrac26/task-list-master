@@ -139,13 +139,16 @@ function App() {
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="app-container">
       <Header />
       <div className="task-controls">
         <TaskSearch setSearchQuery={setSearchQuery} />
         <TaskFilters setFilterCategory={setFilterCategory} setFilterStatus={setFilterStatus} />
-        <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>Añadir Tarea</button>
+        <button className="add-task-btn" onClick={openModal}>Añadir Tarea</button>
       </div>
       <TaskList
         tasks={filteredTasks}
@@ -153,8 +156,8 @@ function App() {
         removeTask={removeTask}
         editTask={editTask}
       />
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <TaskForm addTask={addTask} onClose={() => setIsModalOpen(false)} />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <TaskForm addTask={addTask} onClose={closeModal} />
       </Modal>
     </div>
   );

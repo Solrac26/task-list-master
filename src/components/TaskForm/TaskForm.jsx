@@ -92,13 +92,14 @@ function TaskForm({ addTask, onClose }) {
         <label htmlFor="dueDate">Fecha de vencimiento</label>
         <input
           id="dueDate"
+          placeholder="Selecciona una fecha"
           type="date"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />
       </div>
 
-      <button type="submit" aria-label="Agregar tarea">
+      <button type="submit" aria-label="Agregar tarea" className="btn-primary">
         <FiPlus /> Agregar tarea
       </button>
     </form>
