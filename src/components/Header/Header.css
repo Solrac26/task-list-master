@@ -1,14 +1,59 @@
 .header {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
   text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 30px 0;
+  margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 20px 20px; /* Bordes redondeados en la parte inferior */
 }
 
 .header h1 {
   margin: 0;
-  font-size: 2rem;
-  color: #333;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 60%;
+  height: 4px;
+  background-color: #fff;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+  border-radius: 2px; /* Bordes redondeados para la línea debajo del título */
+}
+
+.header h1:hover::after {
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 0;
+    border-radius: 0 0 15px 15px; /* Bordes redondeados más pequeños en pantallas móviles */
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+@keyframes colorChange {
+  0% { color: #ffffff; }
+  50% { color: #ffd700; }
+  100% { color: #ffffff; }
+}
+
+.header h1 {
+  animation: colorChange 5s infinite;
 }

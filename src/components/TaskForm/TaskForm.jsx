@@ -12,6 +12,7 @@
 // La línea anterior desactiva temporalmente las advertencias de ESLint relacionadas con las prop-types.
 // Esto es útil si las prop-types no se están utilizando pero se planea hacerlo más adelante.
 
+import React from 'react';
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import "./TaskForm.css";
@@ -22,9 +23,10 @@ import "./TaskForm.css";
  * @function TaskForm
  * @param {Object} props - Las propiedades recibidas por el componente.
  * @param {Function} props.addTask - Función para añadir una nueva tarea a la lista.
+ * @param {Function} props.onClose - Función para cerrar el modal después de añadir la tarea.
  * @returns {JSX.Element} JSX que representa el formulario de creación de tareas.
  */
-function TaskForm({ addTask }) {
+function TaskForm({ addTask, onClose }) {
   // useState hooks para manejar los valores de los inputs del formulario.
   const [newTask, setNewTask] = useState(""); // Estado para el nombre de la nueva tarea.
   const [description, setDescription] = useState(""); // Estado para la descripcion de la nueva tarea.
@@ -47,45 +49,57 @@ function TaskForm({ addTask }) {
       setCategory("");
       setDescription("");
       setDueDate("");
+      onClose(); // Cierra el modal después de añadir la tarea
     }
   };
 
   return (
     // Formulario para añadir una nueva tarea
     <form className="task-form" onSubmit={handleSubmit}>
-      {/* Campo de entrada de texto para el nombre de la nueva tarea */}
-      <input
-        type="text"
-        placeholder="Nueva tarea..."
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-      />
+      <div className="form-group">
+        <label htmlFor="newTask">Nueva tarea</label>
+        <input
+          id="newTask"
+          type="text"
+          placeholder="Agrega una nueva tarea"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+      </div>
 
-      <input
-        type="text"
-        placeholder="Descripcion..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <div className="form-group">
+        <label htmlFor="description">Descripción</label>
+        <input
+          id="description"
+          type="text"
+          placeholder="Descripción de la tarea"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
 
-      {/* Selector para elegir la categoría de la tarea */}
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value="">Categoría</option>
-        <option value="Trabajo">Trabajo</option>
-        <option value="Personal">Personal</option>
-        <option value="Hogar">Hogar</option>
-      </select>
+      <div className="form-group">
+        <label htmlFor="category">Categoría</label>
+        <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Selecciona una categoría</option>
+          <option value="Trabajo">Trabajo</option>
+          <option value="Personal">Personal</option>
+          <option value="Hogar">Hogar</option>
+        </select>
+      </div>
 
-      {/* Campo de entrada para seleccionar la fecha de vencimiento de la tarea */}
-      <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
+      <div className="form-group">
+        <label htmlFor="dueDate">Fecha de vencimiento</label>
+        <input
+          id="dueDate"
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
+      </div>
 
-      {/* Botón para enviar el formulario y añadir la tarea */}
       <button type="submit" aria-label="Agregar tarea">
-        <FiPlus size={20} /> {/* Icono "+" para el botón */}
+        <FiPlus /> Agregar tarea
       </button>
     </form>
   );

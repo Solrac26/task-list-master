@@ -6,12 +6,13 @@
  * Incluye almacenamiento en localStorage para persistir las tareas.
  */
 
-import { useState, useEffect } from 'react'; // Importamos useEffect para manejar efectos secundarios
+import React, { useState, useEffect } from 'react'; // Importamos useEffect para manejar efectos secundarios
 import Header from './components/Header/Header';
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
 import TaskSearch from './components/TaskSearch/TaskSearch';
 import TaskFilters from './components/TaskFilters/TaskFilters';
+import Modal from './components/Modal/Modal'; // Nuevo componente Modal
 import './App.css';
 
 /**
@@ -38,6 +39,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState(''); // Estado para la búsqueda de tareas.
   const [filterCategory, setFilterCategory] = useState(''); // Estado para el filtro de categoría.
   const [filterStatus, setFilterStatus] = useState(''); // Estado para el filtro de estado (completadas o pendientes).
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   /**
    * Guarda las tareas en localStorage cada vez que el estado de tasks cambia.
@@ -139,24 +141,21 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Renderiza el encabezado */}
       <Header />
-      {/* Renderiza los filtros y la búsqueda solo si hay más de una tarea */}
-      {tasks.length > 1 && (
-        <>
-          <TaskSearch setSearchQuery={setSearchQuery} />
-          <TaskFilters setFilterCategory={setFilterCategory} setFilterStatus={setFilterStatus} />
-        </>
-      )}
-      {/* Renderiza el formulario para añadir nuevas tareas */}
-      <TaskForm addTask={addTask} />
-      {/* Renderiza la lista de tareas */}
+      <div className="task-controls">
+        <TaskSearch setSearchQuery={setSearchQuery} />
+        <TaskFilters setFilterCategory={setFilterCategory} setFilterStatus={setFilterStatus} />
+        <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>Añadir Tarea</button>
+      </div>
       <TaskList
         tasks={filteredTasks}
         toggleTaskCompletion={toggleTaskCompletion}
         removeTask={removeTask}
         editTask={editTask}
       />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <TaskForm addTask={addTask} onClose={() => setIsModalOpen(false)} />
+      </Modal>
     </div>
   );
 }

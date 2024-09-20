@@ -1,38 +1,75 @@
 .task-form {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
   margin-bottom: 20px;
+  width: 100%; /* Cambiado de max-width a width */
+  padding: 0 20px; /* Añadido padding horizontal */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que cada grupo de formulario ocupe todo el ancho */
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--texto-principal);
 }
 
 .task-form input,
 .task-form select {
+  width: 100%; /* Asegura que los inputs y selects ocupen todo el ancho */
   padding: 10px;
   font-size: 1rem;
   border: 1px solid var(--color-principal);
-  border-radius: 25px;
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   color: var(--texto-principal);
 }
 
 .task-form input:focus,
 .task-form select:focus {
   border-color: var(--color-principal);
+  box-shadow: 0 0 0 2px rgba(227, 242, 253, 0.5);
 }
 
 .task-form button {
   background-color: var(--color-principal);
   color: var(--texto-principal);
-  padding: 10px;
-  border-radius: 50%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%; /* Cambiado para que el botón ocupe todo el ancho */
+  margin-top: 10px;
 }
 
 .task-form button:hover {
   background-color: #BBDEFB;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+}
+
+.task-form button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 768px) {
+  .task-form {
+    max-width: 500px; /* Limita el ancho en pantallas más grandes */
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
