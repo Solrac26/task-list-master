@@ -11,4 +11,16 @@
   color: #333;
   font-weight: 600;
   letter-spacing: 1px;
+  animation: fadeIn 2s ease-in-out;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.header h1:hover {
+  color: orange;
+  transform: translateY(-10px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

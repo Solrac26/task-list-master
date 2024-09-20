@@ -20,7 +20,7 @@ function Header() {
     // La clase "header" se usa para aplicar estilos definidos en el archivo Header.css.
     <header className="header">
       {/* <h1> se utiliza para mostrar el título principal del encabezado */}
-      <h1>Lista de Tareas</h1>
+      <h1>TaskLy</h1>
     </header>
   );
 }

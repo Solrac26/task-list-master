@@ -57,19 +57,21 @@ function TaskForm({ addTask }) {
       <input
         type="text"
         placeholder="Nueva tarea..."
+        title="Nueva tarea..."
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
       />
 
       <input
         type="text"
-        placeholder="Descripcion..."
+        placeholder="Descripción..."
+        title="Descripción..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
 
       {/* Selector para elegir la categoría de la tarea */}
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <select value={category} title="Categorias" onChange={(e) => setCategory(e.target.value)}>
         <option value="">Categoría</option>
         <option value="Trabajo">Trabajo</option>
         <option value="Personal">Personal</option>
@@ -84,7 +86,7 @@ function TaskForm({ addTask }) {
       />
 
       {/* Botón para enviar el formulario y añadir la tarea */}
-      <button type="submit" aria-label="Agregar tarea">
+      <button type="submit" title="Agregar Tarea" aria-label="Agregar tarea">
         <FiPlus size={20} /> {/* Icono "+" para el botón */}
       </button>
     </form>
