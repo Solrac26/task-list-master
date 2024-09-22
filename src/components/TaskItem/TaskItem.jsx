@@ -9,6 +9,7 @@
 // Desactiva temporalmente las advertencias de ESLint relacionadas con las prop-types. 
 // Esto es útil si las prop-types no se están utilizando pero se planea hacerlo más adelante.
 
+import React from 'react';
 import { useState } from 'react';
 import { FiCheck, FiTrash2, FiEdit, FiX } from 'react-icons/fi'; // Importamos el icono para cancelar
 import './TaskItem.css';
@@ -92,11 +93,11 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
           />
           <div className="edit-buttons">
             {/* Botón para guardar los cambios en la tarea */}
-            <button className="edit-save-btn" onClick={handleEdit} aria-label="Guardar cambios">
+            <button className="edit-save-btn" onClick={handleEdit} aria-label="Guardar cambios" title="Guardar cambios">
               <FiCheck size={18} />
             </button>
             {/* Botón para cancelar la edición de la tarea */}
-            <button className="edit-cancel-btn" onClick={handleCancelEdit} aria-label="Cancelar edición">
+            <button className="edit-cancel-btn" onClick={handleCancelEdit} aria-label="Cancelar edición" title="Cancelar edición">
               <FiX size={18} />
             </button>
           </div>
@@ -116,15 +117,15 @@ function TaskItem({ task, index, toggleTaskCompletion, removeTask, editTask }) {
       )}
       <div className="icons">
         {/* Botón para marcar la tarea como completada */}
-        <button className="check-btn" onClick={() => toggleTaskCompletion(index)} aria-label="Marcar como completada">
+        <button className="check-btn" onClick={() => toggleTaskCompletion(index)} aria-label="Marcar como completada" title="Marcar como completada">
           <FiCheck size={18} />
         </button>
         {/* Botón para editar la tarea */}
-        <button className="edit-btn" onClick={handleEdit} aria-label="Editar tarea">
+        <button className="edit-btn" onClick={handleEdit} aria-label="Editar tarea" title="Editar tarea">
           <FiEdit size={18} />
         </button>
         {/* Botón para eliminar la tarea */}
-        <button className="delete-btn" onClick={() => removeTask(index)} aria-label="Eliminar tarea">
+        <button className="delete-btn" onClick={() => removeTask(index)} aria-label="Eliminar tarea" title="Eliminar tarea">
           <FiTrash2 size={18} />
         </button>
       </div>

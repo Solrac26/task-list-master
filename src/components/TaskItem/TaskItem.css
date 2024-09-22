@@ -1,25 +1,20 @@
 .task-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-  border-radius: 10px;
   background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease,
-    transform 0.2s ease;
-  margin-bottom: 15px;
-  border-left: 5px solid var(--color-pendientes);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+.task-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .task-item.completed {
-  background-color: #ffffff;
   border-left: 5px solid var(--color-completadas);
-}
-
-.task-item.completed span {
-  text-decoration: none;
-  color: var(--texto-principal);
 }
 
 .task-item span {
@@ -27,12 +22,13 @@
   display: block;
   font-size: 1.2rem;
   color: var(--texto-principal);
+  margin-bottom: 10px;
 }
 
 .task-info {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
 }
 
 .task-info small {
@@ -43,29 +39,20 @@
 .icons {
   display: flex;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: auto;
+  justify-content: flex-end;
 }
 
-.check-btn,
-.edit-btn,
-.delete-btn {
-  background: transparent;
-  color: var(--color-principal);
-  padding: 6px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Resto de los estilos... */
+
+@media (max-width: 1024px) {
+  .task-item {
+    width: calc(50% - 20px);
+  }
 }
 
-.check-btn:hover,
-.edit-btn:hover {
-  background-color: var(--color-principal);
-  color: var(--texto-principal);
-}
-
-.delete-btn:hover {
-  background-color: var(--color-vencidas);
-  color: #ffffff;
+@media (max-width: 768px) {
+  .task-item {
+    width: 100%;
+  }
 }

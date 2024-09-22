@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * @file TaskList.jsx
  * @description Componente para renderizar una lista de tareas.
@@ -25,20 +27,20 @@ import './TaskList.css';
  */
 function TaskList({ tasks, toggleTaskCompletion, removeTask, editTask }) {
   return (
-    // Contenedor principal para la lista de tareas, con la clase CSS "task-list".
-    <ul className="task-list">
-      {/* Mapea sobre el array de tareas y renderiza un `TaskItem` para cada tarea */}
-      {tasks.map((task, index) => (
-        <TaskItem
-          key={index} // La clave única `key` ayuda a React a identificar los elementos individuales.
-          task={task} // La tarea actual que se va a mostrar.
-          index={index} // El índice de la tarea en la lista.
-          toggleTaskCompletion={toggleTaskCompletion} // Función para alternar el estado de completado.
-          removeTask={removeTask} // Función para eliminar la tarea.
-          editTask={editTask} // Función para editar la tarea.
-        />
-      ))}
-    </ul>
+    <div className="task-list-container">
+      <ul className="task-list">
+        {/* Mapea sobre el array de tareas y renderiza un `TaskItem` para cada tarea */}
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id} // La clave única `key` ayuda a React a identificar los elementos individuales.
+            task={task} // La tarea actual que se va a mostrar.
+            toggleTaskCompletion={toggleTaskCompletion} // Función para alternar el estado de completado.
+            removeTask={removeTask} // Función para eliminar la tarea.
+            editTask={editTask} // Función para editar la tarea.
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 

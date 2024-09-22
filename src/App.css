@@ -1,17 +1,18 @@
 /* Estilos generales */
 body {
-  background-color: var(--color-principal);
-  color: var(--texto-principal);
+  margin: 0;
+  padding: 0;
   font-family: "Poppins", sans-serif;
+  background-color: #f0f0f0; /* Un fondo neutro para el body */
 }
 
 .app-container {
-  background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
+  background: linear-gradient(135deg, #f5f8ff, #faf5ff); /* Gradiente más claro */
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
 }
 
 /* Estilos para el encabezado */
@@ -19,95 +20,173 @@ body {
   color: var(--texto-principal);
   text-align: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 /* Estilos para el formulario de tareas */
 .task-form {
   margin-bottom: 20px;
-}
-
-.task-form input,
-.task-form select,
-.task-form textarea {
-  border: 1px solid var(--color-principal);
-  border-radius: 5px;
-  padding: 8px;
-  margin-bottom: 10px;
   width: 100%;
-}
-
-.task-form button {
-  background-color: var(--color-principal);
-  color: var(--texto-principal);
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.task-form button:hover {
-  background-color: #BBDEFB;
 }
 
 /* Estilos para la lista de tareas */
 .task-list {
   list-style-type: none;
   padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
 }
 
 .task-item {
   background-color: #ffffff;
   border-left: 4px solid var(--color-pendientes);
-  margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px;
   transition: all 0.3s ease;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
-.task-item.completed {
-  border-left-color: var(--color-completadas);
+/* Media queries para responsividad */
+@media (max-width: 1200px) {
+  .task-item {
+    width: calc(50% - 20px);
+  }
 }
 
-.task-item.overdue {
-  border-left-color: var(--color-vencidas);
+@media (max-width: 768px) {
+  .task-item {
+    width: 100%;
+  }
 }
 
-.task-text {
-  color: var(--texto-principal);
-  font-weight: bold;
+/* Resto de los estilos... */
+
+.task-controls {
+  background: linear-gradient(135deg, #e0e8ff, #f3e7ff);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Reducido de 52px a 20px */
+  flex-wrap: nowrap;
 }
 
-.task-description {
-  color: var(--texto-secundario);
-  font-size: 0.9em;
-}
-
-/* Estilos para los botones de acción de tareas */
-.task-actions button {
-  background-color: var(--color-principal);
-  color: var(--texto-principal);
-  border: none;
-  border-radius: 50px;
-  padding: 5px 10px;
-  margin-right: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.task-actions button:hover {
-  background-color: #BBDEFB;
-}
-
-/* Estilos para la búsqueda y filtros */
-.search-container,
-.filter-container {
-  margin-bottom: 20px;
-}
-
-.search-container input,
-.filter-container select {
-  border: 1px solid var(--color-principal);
-  border-radius: 5px;
-  padding: 8px;
+.task-search {
+  flex: 0 0 auto;
   width: 100%;
+  max-width: 300px;
+}
+
+.task-filters {
+  display: flex;
+  gap: 20px; /* Reducido de 32px a 20px */
+  flex-grow: 1;
+}
+
+.task-filters select {
+  flex: 1;
+  max-width: 200px;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: var(--texto-principal);
+}
+
+.add-task-btn {
+  flex: 0 0 auto;
+  background-color: #FF4081;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+  font-weight: bold;
+  margin-right: 0; /* Eliminado el margen negativo */
+}
+
+.add-task-btn:hover {
+  background-color: #F50057;
+  transform: translateY(-2px);
+}
+
+/* Media query para responsividad */
+@media (max-width: 1024px) {
+  .task-controls {
+    flex-wrap: wrap;
+    gap: 16px; /* Reducir el gap en pantallas más pequeñas */
+    padding: 15px;
+  }
+
+  .task-search {
+    flex: 1 1 100%;
+    max-width: none;
+    margin-bottom: 16px;
+  }
+
+  .task-filters {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+
+  .task-filters select {
+    max-width: none;
+  }
+
+  .add-task-btn {
+    margin-left: 0; /* Eliminar margen izquierdo en pantallas más pequeñas */
+    align-self: flex-end; /* Alinear el botón a la derecha */
+  }
+}
+
+@media (max-width: 768px) {
+  .task-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding-right: 0; /* Eliminado el padding en pantallas pequeñas */
+  }
+
+  .task-search,
+  .task-filters,
+  .task-filters select,
+  .add-task-btn {
+    width: 100%;
+  }
+
+  .task-filters {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: -20px auto 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px; /* Bordes redondeados para el contenido principal */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: -15px; /* Ajuste para pantallas móviles */
+    width: calc(100% - 20px);
+    border-radius: 15px;
+  }
+  
+  /* ... otros estilos responsivos ... */
 }

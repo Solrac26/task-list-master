@@ -1,10 +1,10 @@
 .task-filters {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 32px;
 }
 
 .task-filters select {
+  flex: 1;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid var(--color-principal);
@@ -16,4 +16,11 @@
 
 .task-filters select:focus {
   border-color: var(--color-principal);
+}
+
+@media (max-width: 768px) {
+  .task-filters {
+    flex-direction: column;
+    gap: 16px;
+  }
 }

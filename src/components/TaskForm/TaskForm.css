@@ -1,38 +1,93 @@
 .task-form {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
   margin-bottom: 20px;
+  width: 100%; /* Cambiado de max-width a width */
+  padding: 20px; /* Añadido padding horizontal */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que cada grupo de formulario ocupe todo el ancho */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--texto-principal);
 }
 
 .task-form input,
-.task-form select {
+.task-form select,
+.task-form button {
+  width: 100%;
   padding: 10px;
+  border: 1px solid var(--color-borde, #ccc);
+  border-radius: 8px;
+  box-sizing: border-box;
   font-size: 1rem;
-  border: 1px solid var(--color-principal);
-  border-radius: 25px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  color: var(--texto-principal);
 }
-
+.btn-primary {
+  background-color: #007bff; /* O el color que estés usando */
+  color: white;
+  /* Otros estilos necesarios */
+}
 .task-form input:focus,
 .task-form select:focus {
   border-color: var(--color-principal);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(227, 242, 253, 0.5);
 }
 
 .task-form button {
-  background-color: var(--color-principal);
-  color: var(--texto-principal);
-  padding: 10px;
-  border-radius: 50%;
+  background-color: var(--color-fondo-secundario, #E3F2FD);
+  color: var(--color-texto-oscuro, #1565C0);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  gap: 8px;
+  margin-top: 15px;
 }
 
 .task-form button:hover {
-  background-color: #BBDEFB;
-  transform: scale(1.05);
+  background-color: var(--color-fondo-principal, #BBDEFB);
+  color: var(--color-texto-principal, #0D47A1);
+  transform: translateY(-2px);
+}
+
+.task-form button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 768px) {
+  .task-form {
+    max-width: 500px; /* Limita el ancho en pantallas más grandes */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
 }

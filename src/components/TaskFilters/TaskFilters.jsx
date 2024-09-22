@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * @file TaskFilters.jsx
  * @description Este componente permite a los usuarios filtrar las tareas por categoría y estado.
@@ -26,7 +28,7 @@ function TaskFilters({ setFilterCategory, setFilterStatus }) {
     <div className="task-filters">
       {/* Primer selector para filtrar las tareas por categoría */}
       <select onChange={(e) => setFilterCategory(e.target.value)}>
-        <option value="">Todas las Categorías</option>
+        <option value="">Todas las categorías</option>
         <option value="Trabajo">Trabajo</option>
         <option value="Personal">Personal</option>
         <option value="Hogar">Hogar</option>
@@ -34,7 +36,7 @@ function TaskFilters({ setFilterCategory, setFilterStatus }) {
 
       {/* Segundo selector para filtrar las tareas por estado */}
       <select onChange={(e) => setFilterStatus(e.target.value)}>
-        <option value="">Todos los Estados</option>
+        <option value="">Todos los estados</option>
         <option value="completed">Completadas</option>
         <option value="pending">Pendientes</option>
       </select>

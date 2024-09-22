@@ -38,3 +38,30 @@
 .edit-cancel-btn:hover {
   color: var(--color-vencidas);
 }
+
+.task-list-container {
+  background: linear-gradient(135deg, #e0e8ff, #f3e7ff);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .task-list-container {
+    border-radius: 10px;
+    padding: 15px;
+  }
+  
+  .task-list {
+    gap: 15px;
+  }
+}
