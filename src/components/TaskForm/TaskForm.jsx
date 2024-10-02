@@ -1,7 +1,7 @@
 /**
  * @file TaskForm.jsx
  * @description Este componente es un formulario que permite al usuario añadir nuevas tareas.
- * Incluye campos para el nombre de la tarea, la categoría y la fecha de vencimiento.
+ * Incluye campos para el nombre de la tarea, la categoría, la fecha de vencimiento y la prioridad.
  *
  * Utiliza `useState` para manejar el estado interno del formulario.
  *
@@ -32,6 +32,7 @@ function TaskForm({ addTask, onClose }) {
   const [description, setDescription] = useState(""); // Estado para la descripcion de la nueva tarea.
   const [category, setCategory] = useState(""); // Estado para la categoría de la tarea.
   const [dueDate, setDueDate] = useState(""); // Estado para la fecha de vencimiento de la tarea.
+  const [priority, setPriority] = useState(""); // Estado para la prioridad de la tarea.
 
   /**
    * Maneja el evento de envío del formulario.
@@ -44,11 +45,12 @@ function TaskForm({ addTask, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTask.trim()) {
-      addTask(newTask, description, category, dueDate);
+      addTask(newTask, description, category, dueDate, priority);
       setNewTask("");
       setCategory("");
       setDescription("");
       setDueDate("");
+      setPriority("");
       onClose(); // Cierra el modal después de añadir la tarea
     }
   };
@@ -97,6 +99,16 @@ function TaskForm({ addTask, onClose }) {
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="priority">Prioridad</label>
+        <select id="priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="">Selecciona una prioridad</option>
+          <option value="baja">Baja</option>
+          <option value="media">Media</option>
+          <option value="alta">Alta</option>
+        </select>
       </div>
 
       <button type="submit" aria-label="Agregar tarea" className="btn-primary">

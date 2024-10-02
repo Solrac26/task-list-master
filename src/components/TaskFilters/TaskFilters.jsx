@@ -22,7 +22,7 @@ import './TaskFilters.css';
  * @param {Function} props.setFilterStatus - Función para actualizar el filtro de estado.
  * @returns {JSX.Element} JSX que representa los filtros de categoría y estado.
  */
-function TaskFilters({ setFilterCategory, setFilterStatus }) {
+function TaskFilters({ setFilterCategory, setFilterStatus}) {
   return (
     // Contenedor principal para los selectores de filtros, con la clase CSS "task-filters".
     <div className="task-filters">

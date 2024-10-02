@@ -20,10 +20,10 @@ import './TaskSearch.css';
  * @param {Function} props.setSearchQuery - Función para actualizar el término de búsqueda.
  * @returns {JSX.Element} JSX que representa el campo de búsqueda.
  */
-const TaskSearch = ({ setSearchValue }) => {
+const TaskSearch = ({ setSearchQuery }) => { // Cambiado de setSearchValue a setSearchQuery
   // Elimina searchValue si no lo estás usando
   const handleSearchValueChange = (event) => {
-    setSearchValue(event.target.value);
+    setSearchQuery(event.target.value); // Cambiado de setSearchValue a setSearchQuery
   };
 
   return (

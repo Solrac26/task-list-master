@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // Importar useState
 
 /**
  * @file TaskList.jsx
@@ -23,20 +23,41 @@ import './TaskList.css';
  * @param {Function} props.toggleTaskCompletion - Función para alternar el estado de completado de una tarea.
  * @param {Function} props.removeTask - Función para eliminar una tarea.
  * @param {Function} props.editTask - Función para editar una tarea.
+ * @param {Function} props.updateTaskOrder - Función para actualizar el orden de las tareas.
  * @returns {JSX.Element} JSX que representa la lista de tareas.
  */
-function TaskList({ tasks, toggleTaskCompletion, removeTask, editTask }) {
+function TaskList({ tasks, toggleTaskCompletion, removeTask, editTask, updateTaskOrder }) {
+  const [draggedIndex, setDraggedIndex] = useState(null); // Estado para el índice de la tarea arrastrada
+
+  const handleDragStart = (index) => {
+    setDraggedIndex(index); // Guardar el índice de la tarea arrastrada
+  };
+
+  const handleDrop = (index) => {
+    if (draggedIndex !== null) {
+      const updatedTasks = [...tasks];
+      const [movedTask] = updatedTasks.splice(draggedIndex, 1); // Eliminar la tarea arrastrada
+      updatedTasks.splice(index, 0, movedTask); // Insertar la tarea en la nueva posición
+      updateTaskOrder(updatedTasks); // Llamar a la función para actualizar el estado en App
+    }
+    setDraggedIndex(null); // Reiniciar el índice arrastrado
+  };
+
   return (
     <div className="task-list-container">
       <ul className="task-list">
-        {/* Mapea sobre el array de tareas y renderiza un `TaskItem` para cada tarea */}
-        {tasks.map((task) => (
+        {tasks.map((task, index) => (
           <TaskItem
-            key={task.id} // La clave única `key` ayuda a React a identificar los elementos individuales.
-            task={task} // La tarea actual que se va a mostrar.
-            toggleTaskCompletion={toggleTaskCompletion} // Función para alternar el estado de completado.
-            removeTask={removeTask} // Función para eliminar la tarea.
-            editTask={editTask} // Función para editar la tarea.
+            key={task.id}
+            task={task}
+            index={index}
+            toggleTaskCompletion={toggleTaskCompletion}
+            removeTask={removeTask}
+            editTask={editTask}
+            draggable // Habilitar arrastre
+            onDragStart={() => handleDragStart(index)} // Manejar inicio de arrastre
+            onDrop={() => handleDrop(index)} // Manejar caída
+            onDragOver={(e) => e.preventDefault()} // Prevenir el comportamiento por defecto
           />
         ))}
       </ul>
